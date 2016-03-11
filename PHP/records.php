@@ -12,6 +12,9 @@ switch($command){
     case "getRecords":
         $result = $state->getRecords($host);
         break;
+    case "registration":
+        $result = $state->Registration($host, $login, $password);
+        break;
     default:
         $result = "no such option.";
 }

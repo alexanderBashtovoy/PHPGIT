@@ -21,4 +21,21 @@ class HostConnection
         mysqli_close($connection);
         return $arr;
     }
+
+    public function Registration($host, $login, $password)
+    {
+        $token = rand(100000, 999999);
+
+        setcookie("login", $login, time() + 3600 * 24, '/', false, false);
+        setcookie("token", $token, time() + 3600 * 24, '/', false, false);
+
+        $connection = mysqli_connect($host[0], $host[1], $host[2], $host[3]) or die (json_encode("Error " . mysqli_error($connection)));
+        $connection->query('SET NAMES utf8');
+
+        $query = "INSERT INTO userstable (login, password, token) VALUES ('$login', '$password', $token)";
+        $connection->query($query);
+
+        mysqli_close($connection);
+        return $token;
+    }
 }
