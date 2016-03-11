@@ -1,0 +1,56 @@
+#floater{
+    float		: left;
+    height		: 50%;
+    margin-bottom	: -120px;
+}
+#content{
+    clear		: both;
+    height		: 240px;
+    position	: relative;
+}
+
+.message{
+    background-color: #ebebeb;
+    border-radius: 10px;
+    padding:5px;
+    margin: 10px;
+}
+
+.tabl{
+    width: 100%;
+    border-spacing: 5px;
+    border-collapse: separate !important;
+}
+.head{
+    //border: solid 1px black;
+    width: 15%;
+    vertical-align: top;
+    background-color: #e4b9b9;
+    border-radius: 10px;
+    padding: 10px;
+    margin-right: 10px;
+}
+.body{
+    //border: solid 1px black;
+    vertical-align: top;
+    margin-left: 10px;
+    background-color: #46b8da;
+    border-radius: 10px;
+    padding: 10px;
+    margin-right: 10px;
+    color: white;
+}
+
+.out{
+    padding:0;
+}
+
+#loginGroup{
+    margin-bottom: 10px;
+}
+div.errorMsg {color: red}
+.invalidElem {box-shadow: 0 0 10px red;}
+
+#inputForm > input{
+    margin-bottom: 10px;
+}
