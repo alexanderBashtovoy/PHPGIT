@@ -16,7 +16,7 @@ switch($command){
         $result = $state->getRecords($host);
         break;
     case "Login":
-        $result = $state->Login($host, $login, $password);
+        $result = $state->LogIn($host, $login, $password);
         break;
     default:
         $result = "no such option.";
