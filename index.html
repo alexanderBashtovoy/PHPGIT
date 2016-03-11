@@ -8,6 +8,29 @@
 </head>
 <body ng-controller="bookController">
 <body ng-controller="bookController">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="modalTitle">{{title}}</h4>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <form action="" id="inputForm">
+                    <input type="text" class="form-control required" placeholder="{{loginPlaceholder}}" id="login" style="margin-bottom: 10px" ng-model="login">
+                    <input type="password" class="form-control required" placeholder="Пароль" id="password" ng-model="password" ng-show="!show">
+                    <textarea id="messageId" class="required" placeholder="Текст сообщения" ng-model="message" ng-show="show" style="resize: none; width: 100%; border-radius: 5px"></textarea>
+                    <span id="errorSpan" style="color: red">{{error}}</span>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-primary" aria-hidden="true" id="submit" ng-click="modalSubmit()">{{submit}}</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 <div style="margin-top:10%"></div>
 
 <div class="content" ng-init="init()"> <!---->
