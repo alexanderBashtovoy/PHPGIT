@@ -27,4 +27,34 @@ bookApp.controller('bookController', function ($scope, $log, bookService) {
             //$log.info($scope.records);
         });
     };
+
+    $scope.modalSubmit = function () {
+        switch ($scope.title) {
+            case "Регистрация":
+                bookService.registration(function (token) {
+                    if (token != null && token != "") {
+                        $scope.title = "";
+                        //$("#modalTitle").html("");
+                        //$("#submit").html("");
+                        $scope.logining = true;
+                        $("#myModal").modal('hide');
+                    }
+                    else {
+                        $scope.logining = false;
+                        $scope.error = "Ошибка";
+                    }
+
+                }, $scope.login, $scope.password);
+                break;
+        }
+
+    }
+
+    $scope.onReg = function () {
+        $scope.loginPlaceholder = "Логин";
+        $scope.title = "Регистрация";
+        $scope.submit = "Зарегистрироваться";
+        $scope.show = false;
+        $("#myModal").modal('show');
+    }
 });
