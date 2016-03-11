@@ -60,6 +60,21 @@ bookApp.controller('bookController', function ($scope, $log, bookService) {
 
                 }, $scope.login, $scope.password);
                 break;
+            case "Добавить сообщение":
+                bookService.addMessage(function (records) {
+                    if (records != null && records != "") {
+                        $scope.records = records;
+                        $scope.title = "";
+                        $("#myModal").modal('hide');
+                        //location.reload();
+                    }
+                    else {
+                        $scope.error = "Ошибка";
+                    }
+
+                }, $scope.login, $scope.message);
+                location.reload();
+                break;
         }
 
     }
@@ -77,6 +92,20 @@ bookApp.controller('bookController', function ($scope, $log, bookService) {
         $scope.title = "Вход";
         $scope.submit = "Войти";
         $scope.show = false;
+        $("#myModal").modal('show');
+    }
+
+    $scope.onAddMessage = function () {
+        if ($scope.logining) {
+
+        }
+        else {
+            $scope.loginPlaceholder = "Назовите себя";
+        }
+
+        $scope.title = "Добавить сообщение";
+        $scope.submit = "Отправить";
+        $scope.show = true;
         $("#myModal").modal('show');
     }
 

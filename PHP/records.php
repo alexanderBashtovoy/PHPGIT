@@ -9,7 +9,7 @@ $params = json_decode(file_get_contents('php://input'));
 $command = $params->command;
 $login = $params->login;
 $password = $params->password;
-
+$message = $params->message;
 
 switch($command){
     case "getRecords":
@@ -23,6 +23,9 @@ switch($command){
         break;
     case "registration":
         $result = $state->Registration($host, $login, $password);
+        break;
+    case "AddMessage":
+        $result = $state->AddMassage($host, $login, $message);
         break;
     default:
         $result = "no such option.";

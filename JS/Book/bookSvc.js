@@ -24,6 +24,27 @@ bookApp.factory('bookService', function ($http, $log) {
                 callback(records);
             })
         },
+        addMessage: function (callback, login, message) {
+            $http({
+                method: "POST",
+                url: "PHP/records.php",
+                data: {
+                    command: "AddMessage",
+                    login: login,
+                    message: message
+                }
+            }).success(function (records, status, headers, config) {
+                var reg = /\[.+\]/;
+                var tru = reg.test(records);
+
+                if (tru) {
+                    records = reg.exec(records)[0];
+                    records = $.parseJSON(records);
+                }
+
+                callback(records);
+            })
+        },
         enter: function (callback, login, password) {
             $http({
                 method: "POST",
