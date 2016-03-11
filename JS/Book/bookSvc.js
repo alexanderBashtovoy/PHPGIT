@@ -23,6 +23,26 @@ bookApp.factory('bookService', function ($http, $log) {
 
                 callback(records);
             })
+        },
+        logOut: function (callback, login) {
+            $http({
+                method: "POST",
+                url: "PHP/records.php",
+                data: {
+                    command: "LogOut",
+                    login: login,
+                }
+            }).success(function (result, status, headers, config) {
+                var reg = /.$/;
+                var tru = reg.test(result);
+
+                if (tru) {
+                    result = reg.exec(result)[0];
+                    result = $.parseJSON(result);
+                }
+
+                callback(result);
+            })
         }
     }
 });
