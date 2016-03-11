@@ -27,4 +27,18 @@ bookApp.controller('bookController', function ($scope, $log, bookService) {
             //$log.info($scope.records);
         });
     };
+
+    $scope.onLogOut = function () {
+        bookService.logOut(function (result) {
+            if (result) {
+                $scope.logining = false;
+                $scope.login = "";
+                $scope.password = "";
+            }
+            else {
+                $scope.error = "Ошибка";
+            }
+
+        }, $scope.login);
+    }
 });
