@@ -21,4 +21,23 @@ class HostConnection
         mysqli_close($connection);
         return $arr;
     }
+
+    public function AddMassage($host, $login, $message)
+    {
+        $token = rand(100000, 999999);
+
+        setcookie("login", $login, time() + 3600 * 24, '/', false, false);
+        setcookie("token", $token, time() + 3600 * 24, '/', false, false);
+
+        $connection = mysqli_connect($host[0], $host[1], $host[2], $host[3]) or die (json_encode("Error " . mysqli_error($connection)));
+        $connection->query('SET NAMES utf8');
+
+        $date = date("Y-m-d");
+
+        $query = "INSERT INTO recordsTable (autorName, date, text) VALUES ('$login', '$date', '$message')";
+        $connection->query($query);
+
+        mysqli_close($connection);
+        return $token;
+    }
 }
