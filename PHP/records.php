@@ -8,6 +8,8 @@ $state = new HostConnection();
 $params = json_decode(file_get_contents('php://input'));
 $command = $params->command;
 $login = $params->login;
+$password = $params->password;
+
 
 switch($command){
     case "getRecords":
@@ -15,6 +17,9 @@ switch($command){
         break;
     case "LogOut":
         $result = $state->LogOut($host, $login);
+        break;
+    case "registration":
+        $result = $state->Registration($host, $login, $password);
         break;
     default:
         $result = "no such option.";
