@@ -7,7 +7,30 @@
     <title>Гостевая</title>
 </head>
 <body ng-controller="bookController">
+<body ng-controller="bookController">
+<div style="margin-top:10%"></div>
 
+<div class="content" ng-init="init()"> <!---->
+    <!--Шаблон для сообщения-->
+    <div class="row" ng-repeat="record in records">
+        <div class="col-xs-offset-2 col-xs-8">
+            <div class="row message">
+                <table class="tabl">
+                    <tr>
+                        <td class="head">
+                            <strong>{{record.date}}</strong>
+                            <p>{{record.autorName}}</p>
+                        </td>
+                        <td class="body">
+                            <p>{{record.text}}</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--Шаблон для сообщения-->
+</div>
 </body>
 <!--======================================================================================-->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
