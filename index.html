@@ -7,7 +7,6 @@
     <title>Гостевая</title>
 </head>
 <body ng-controller="bookController">
-<body ng-controller="bookController">
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -34,6 +33,11 @@
 <div style="margin-top:10%"></div>
 
 <div class="content" ng-init="init()"> <!---->
+    <div class="row text-center">
+        <div>
+            <button class="btn btn-default" ng-click="onEnter()" ng-show="!logining">Вход</button>
+        </div>
+    </div>
     <!--Шаблон для сообщения-->
     <div class="row" ng-repeat="record in records">
         <div class="col-xs-offset-2 col-xs-8">
