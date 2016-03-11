@@ -23,6 +23,27 @@ bookApp.factory('bookService', function ($http, $log) {
 
                 callback(records);
             })
-        }
+        },
+        registration: function (callback, login, password) {
+            $http({
+                method: "POST",
+                url: "PHP/records.php",
+                data: {
+                    command: "registration",
+                    login: login,
+                    password: password
+                }
+            }).success(function (token, status, headers, config) {
+                var reg = /\d{6}$/;
+                var tru = reg.test(token);
+
+                if (tru) {
+                    token = reg.exec(token)[0];
+                    token = $.parseJSON(token);
+                }
+
+                callback(token);
+            })
+        },
     }
 });
