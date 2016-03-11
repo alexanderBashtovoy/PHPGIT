@@ -15,6 +15,9 @@ switch($command){
     case "getRecords":
         $result = $state->getRecords($host);
         break;
+    case "Login":
+        $result = $state->LogIn($host, $login, $password);
+        break;
     case "LogOut":
         $result = $state->LogOut($host, $login);
         break;
